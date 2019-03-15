@@ -2944,8 +2944,6 @@ html, body {
   height: 100vh;
   overflow: hidden;
   position: relative; }
-  #page-wrapper #page-bg-effect {
-    display: block; }
   #page-wrapper #page-content {
     width: calc(100%);
     height: 100vh;
@@ -3091,3 +3089,12 @@ html, body {
           color: #EEE; }
         #page-wrapper .drawer .main-menu li a {
           color: inherit; }
+
+#page-bg-effect {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #333; }

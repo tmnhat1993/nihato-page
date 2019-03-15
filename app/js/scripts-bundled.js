@@ -90,6 +90,10 @@ exports.default = void 0;
 
 var _ = _interopRequireWildcard(__webpack_require__(2));
 
+var _colorLibrary = _interopRequireDefault(__webpack_require__(5));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -108,6 +112,15 @@ function () {
     _classCallCheck(this, Demo);
 
     console.log('Setup Success');
+    console.log(stage);
+    this.COLOR_PALLETE = new _colorLibrary.default();
+    this.PALLETE_1 = this.COLOR_PALLETE.COLOR_PALLETE_2;
+    this.RANDOM = 35;
+    this.CANVAS = {
+      width: stage.width,
+      height: stage.height
+    };
+    console.log(this.CANVAS);
     this.bindEvents();
   }
   /* ===================================
@@ -118,12 +131,62 @@ function () {
   _createClass(Demo, [{
     key: "bindEvents",
     value: function bindEvents() {
+      this.InitDraw();
+      this.DoRaining();
       console.log('Bind Event');
     }
     /* ===================================
      *  METHODS
      * =================================== */
 
+  }, {
+    key: "InitDraw",
+    value: function InitDraw() {
+      // Draw Background
+      this.background = new Rect(0, 0, this.CANVAS.width, this.CANVAS.height).addTo(stage).fill(this.PALLETE_1.left_1); // Draw Platform
+
+      this.platform = new Rect(0, this.CANVAS.height - 100, stage.width, 100).addTo(stage);
+      this.platform.fill(this.PALLETE_1.left_2); // Draw Building
+    }
+  }, {
+    key: "DoRaining",
+    value: function DoRaining() {
+      var _this = this;
+
+      setInterval(function () {
+        var randomX = Math.random() * _this.CANVAS.width + 50;
+        var dropTarget = {
+          x: randomX - 70,
+          y: _this.CANVAS.height - 100 + Math.random() * 100
+        };
+        var rainDrop = new Rect(randomX, 0, 1, 20).fill(_this.PALLETE_1.right_1).addTo(stage);
+        rainDrop.animate('1.5s', dropTarget, {
+          easing: 'easeIn',
+          onEnd: function onEnd() {
+            rainDrop.destroy();
+            var waterEffect = new Ellipse(dropTarget.x, dropTarget.y, 5, 1).fill(_this.PALLETE_1.right_1).addTo(stage).animate(new KeyframeAnimation('600ms', {
+              '0%': {
+                opacity: 0,
+                scale: 1
+              },
+              '50%': {
+                opacity: 0.6,
+                scale: 2
+              },
+              '100%': {
+                opacity: 0.25,
+                scale: 1.6
+              }
+            }, {
+              easing: 'easeOut',
+              onEnd: function onEnd() {
+                waterEffect.destroy();
+              }
+            }));
+          }
+        });
+      }, this.RANDOM);
+    }
   }]);
 
   return Demo;
@@ -17300,6 +17363,41 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var colors = function colors() {
+  _classCallCheck(this, colors);
+
+  this.COLOR_PALLETE_1 = {
+    left_2: color('rgb(46,17,45)'),
+    left_1: color('rgb(84,0,50)'),
+    main: color('rgb(135,12,53)'),
+    right_1: color('rgb(201,60,62)'),
+    right_2: color('rgb(240,103,58)')
+  };
+  this.COLOR_PALLETE_2 = {
+    left_2: color('rgb(69,69,69)'),
+    left_1: color('rgb(112,112,112)'),
+    main: color('rgb(56,56,56)'),
+    right_1: color('rgb(186,186,186)'),
+    right_2: color('rgb(255,255,255)')
+  };
+};
+
+exports.default = colors;
 
 /***/ })
 /******/ ]);
