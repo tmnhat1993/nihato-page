@@ -9,11 +9,11 @@ export default class colors{
         };
 
         this.COLOR_PALLETE_2 = {
-            left_2: color('rgb(69,69,69)'),
-            left_1: color('rgb(112,112,112)'),
-            main: color('rgb(56,56,56)'),
-            right_1: color('rgb(186,186,186)'),
-            right_2: color('rgb(255,255,255)'),
+            left_2: color('rgb(49,49,49)'),
+            left_1: color('rgb(82,82,82)'),
+            main: color('rgb(36,36,36)'),
+            right_1: color('rgb(146,146,146)'),
+            right_2: color('rgb(225,225,225)'),
         };
     }
 }
