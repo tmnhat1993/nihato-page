@@ -160,7 +160,7 @@ function () {
           y: _this.CANVAS.height - 100 + Math.random() * 100
         };
         var rainDrop = new Rect(randomX, 0, 1, 20).fill(_this.PALLETE_1.right_1).addTo(stage);
-        rainDrop.animate('1.5s', dropTarget, {
+        rainDrop.animate('1.7s', dropTarget, {
           easing: 'easeIn',
           onEnd: function onEnd() {
             rainDrop.destroy();
@@ -17389,11 +17389,11 @@ var colors = function colors() {
     right_2: color('rgb(240,103,58)')
   };
   this.COLOR_PALLETE_2 = {
-    left_2: color('rgb(69,69,69)'),
-    left_1: color('rgb(112,112,112)'),
+    left_2: color('rgb(39,39,39)'),
+    left_1: color('rgb(52,52,52)'),
     main: color('rgb(56,56,56)'),
-    right_1: color('rgb(186,186,186)'),
-    right_2: color('rgb(255,255,255)')
+    right_1: color('rgb(116,116,116)'),
+    right_2: color('rgb(245,245,245)')
   };
 };
 

@@ -57,7 +57,7 @@ export default class Demo {
             let randomX = Math.random() * this.CANVAS.width + 50;
             let dropTarget = {x: randomX - 70, y: this.CANVAS.height - 100 + Math.random()*100}
             let rainDrop = new Rect(randomX, 0, 1, 20).fill(this.PALLETE_1.right_1).addTo(stage);
-            rainDrop.animate('1.5s', dropTarget, {
+            rainDrop.animate('1.7s', dropTarget, {
                 easing: 'easeIn',
                 onEnd: () => {
                     rainDrop.destroy();
